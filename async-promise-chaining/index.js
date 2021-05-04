@@ -1,4 +1,4 @@
-document.getElementById('action').addEventListener('click', ()=>{
+document.getElementById('action').addEventListener('click', async ()=>{
 
     // call user API
     // store random first name in a variable firstUser
@@ -15,17 +15,17 @@ document.getElementById('action').addEventListener('click', ()=>{
     //      })
     // })
     
-    async function getData() {
-        const response1 = await fetch(userApi)
-        const data1 = await response1.json()
-        const firstUser = data1.results[0].name.first
-        const response2 = await fetch(userApi)
-        const data2 = await response2.json()
-        const secondUser = data2.results[0].name.first
-        console.log(`${firstUser} and ${secondUser} are friends`)
-    }
+    // async function getData() {
+    //     const response1 = await fetch(userApi)
+    //     const data1 = await response1.json()
+    //     const firstUser = data1.results[0].name.first
+    //     const response2 = await fetch(userApi)
+    //     const data2 = await response2.json()
+    //     const secondUser = data2.results[0].name.first
+    //     console.log(`${firstUser} and ${secondUser} are friends`)
+    // }
 
-    getData();
+    // getData();
 
     // answer
     // change anonymous function to async
