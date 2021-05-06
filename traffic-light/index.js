@@ -3,36 +3,41 @@
 let active = 0
 let lights = document.querySelectorAll('.circle')
 
-const switchLight = (currentLight) =>{
+const switchLight = (currentLight) => {
     currentLight.classList.add(currentLight.getAttribute('color'));
 }
-const turnOffLight = (currentLight) =>{
-    // currentLight.className = 'circle'
-    currentLight.classList.remove(currentLight.getAttribute('color'));
+const turnOffLight = (currentLight) => {
+    currentLight.className = 'circle'
 }
 
-const changeLight = (i)=>{
-    
-    return new Promise((res)=>{
-        setTimeout(()=>{
+const changeLight = () => {
+
+    return new Promise((res) => {
+        setTimeout(() => {
             res(
-                console.log(lights[i]),
-                switchLight(lights[i]) 
+                console.log(lights[active]),
+                switchLight(lights[active]),
+                active++,
             )
-        },3000)
+        }, Math.floor(Math.random() * 5000))
     })
 }
 
-(async function() {
-    try{
-       
-       await changeLight(0)
-       await changeLight(1)
-       turnOffLight(lights[0])
-       await changeLight(2)
-       turnOffLight(lights[1])
-    //    turnOffLight(lights[2])
-    }catch(err){
+(async function () {
+
+    try {
+        await changeLight()
+        await changeLight()
+        turnOffLight(lights[0])
+        await changeLight()
+        turnOffLight(lights[1])
+
+        // turn off green
+        // setTimeout(() => {
+        //     turnOffLight(lights[2])
+        // }, 3000)
+
+    } catch (err) {
         console.log(err)
     }
 })();
